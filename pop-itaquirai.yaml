@@ -1,198 +1,223 @@
-<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#04111d"/>
-      <stop offset="100%" stop-color="#02060b"/>
-    </linearGradient>
-    <linearGradient id="nodeGreen" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0f3f25"/>
-      <stop offset="100%" stop-color="#07180f"/>
-    </linearGradient>
-    <linearGradient id="nodeBlue" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#153c78"/>
-      <stop offset="100%" stop-color="#081a38"/>
-    </linearGradient>
-    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.55"/>
-    </filter>
-    <filter id="linkGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="2.3" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <marker id="arrowTx" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#22d3ee"/>
-    </marker>
-    <marker id="arrowRx" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#64748b"/>
-    </marker>
-  </defs>
+---
+cellIdPreamble: ""
+gradientMode: "none"
+animationDurationSecs: 2
 
-  <rect width="1600" height="900" fill="url(#bg)"/>
-  <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
-    <path d="M44 0 L0 0 L0 44" fill="none" stroke="#0b2235" stroke-width="1" opacity="0.65"/>
-  </pattern>
-  <rect width="1600" height="900" fill="url(#grid)" opacity="0.45"/>
+cells:
+  # ===============================
+  # STATUS DOS NODES
+  # ICMP ping normalmente: 1 = UP, 0 = DOWN.
+  # Verde em 1, vermelho em 0.
+  # ===============================
+  node_transporte_box:
+    dataRef: status_transporte
+    fillColor:
+      thresholds:
+        - {color: "#450a0a", level: 0}
+        - {color: "#0f2744", level: 1}
+    strokeColor:
+      thresholds:
+        - {color: "#ef4444", level: 0}
+        - {color: "#2563eb", level: 1}
 
-  <!-- Header -->
-  <rect x="0" y="0" width="1600" height="78" fill="#061526" opacity="0.96"/>
-  <line x1="0" y1="78" x2="1600" y2="78" stroke="#1e3a5f" stroke-width="1"/>
-  <text x="36" y="28" fill="#5eead4" font-size="12" font-family="'Courier New', monospace" font-weight="bold">● NEWPARCE TELECOM</text>
-  <text x="36" y="56" fill="#e2e8f0" font-size="28" font-family="Arial" font-weight="bold">POP Itaquiraí</text>
-  <text x="1480" y="46" fill="#64748b" font-size="13" font-family="'Courier New', monospace" text-anchor="end">Topologia Operacional · MS/BR</text>
+  node_dm4370_box:
+    dataRef: status_dm4370
+    fillColor:
+      thresholds:
+        - {color: "#450a0a", level: 0}
+        - {color: "#0d2218", level: 1}
+    strokeColor:
+      thresholds:
+        - {color: "#ef4444", level: 0}
+        - {color: "#16a34a", level: 1}
 
-  <!-- Logical backbone background path -->
-  <rect x="66" y="112" width="1180" height="686" rx="18" fill="#020b13" stroke="#0f2b44" stroke-width="1" opacity="0.9"/>
+  node_olt_box:
+    dataRef: status_olt
+    fillColor:
+      thresholds:
+        - {color: "#450a0a", level: 0}
+        - {color: "#0d2218", level: 1}
+    strokeColor:
+      thresholds:
+        - {color: "#ef4444", level: 0}
+        - {color: "#16a34a", level: 1}
 
-  <!-- LINKS: TX principal and RX retorno -->
-  <line id="link_transporte_dm_rx" x1="545" y1="228" x2="280" y2="228" stroke="#64748b" stroke-width="3" stroke-linecap="round" opacity="0.48" marker-end="url(#arrowRx)"/>
-  <line id="link_transporte_dm_tx" x1="280" y1="240" x2="545" y2="240" stroke="#22d3ee" stroke-width="7" stroke-linecap="round" filter="url(#linkGlow)" marker-end="url(#arrowTx)"/>
+  node_rb750_box:
+    dataRef: status_rb750
+    fillColor:
+      thresholds:
+        - {color: "#450a0a", level: 0}
+        - {color: "#0d2218", level: 1}
+    strokeColor:
+      thresholds:
+        - {color: "#ef4444", level: 0}
+        - {color: "#16a34a", level: 1}
 
-  <line id="link_dm_olt_rx" x1="724" y1="474" x2="724" y2="306" stroke="#64748b" stroke-width="3" stroke-linecap="round" opacity="0.48" marker-end="url(#arrowRx)"/>
-  <line id="link_dm_olt_tx" x1="742" y1="306" x2="742" y2="474" stroke="#22d3ee" stroke-width="7" stroke-linecap="round" filter="url(#linkGlow)" marker-end="url(#arrowTx)"/>
+  node_loja_box:
+    dataRef: status_loja
+    fillColor:
+      thresholds:
+        - {color: "#450a0a", level: 0}
+        - {color: "#0d2218", level: 1}
+    strokeColor:
+      thresholds:
+        - {color: "#ef4444", level: 0}
+        - {color: "#16a34a", level: 1}
 
-  <line id="link_olt_rb750_rx" x1="420" y1="679" x2="592" y2="592" stroke="#64748b" stroke-width="3" stroke-linecap="round" opacity="0.48" marker-end="url(#arrowRx)"/>
-  <line id="link_olt_rb750_tx" x1="592" y1="606" x2="420" y2="694" stroke="#22d3ee" stroke-width="7" stroke-linecap="round" filter="url(#linkGlow)" marker-end="url(#arrowTx)"/>
+  # ===============================
+  # TRANSPORTE ⇄ DM4370 - 1G
+  # ===============================
+  link_transporte_dm_tx:
+    dataRef: tx_transporte_dm
+    strokeColor:
+      thresholds:
+        - {color: "#22d3ee", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
+  label_transporte_dm_tx:
+    dataRef: tx_transporte_dm
+    label:
+      units: "bps"
+      decimalPoints: 2
+    labelColor:
+      thresholds:
+        - {color: "#e2e8f0", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
 
-  <line id="link_olt_loja_rx" x1="1076" y1="679" x2="887" y2="592" stroke="#64748b" stroke-width="3" stroke-linecap="round" opacity="0.48" marker-end="url(#arrowRx)"/>
-  <line id="link_olt_loja_tx" x1="887" y1="606" x2="1076" y2="694" stroke="#22d3ee" stroke-width="7" stroke-linecap="round" filter="url(#linkGlow)" marker-end="url(#arrowTx)"/>
+  link_transporte_dm_rx:
+    dataRef: rx_transporte_dm
+    strokeColor:
+      thresholds:
+        - {color: "#64748b", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
+  label_transporte_dm_rx:
+    dataRef: rx_transporte_dm
+    label:
+      units: "bps"
+      decimalPoints: 2
+    labelColor:
+      thresholds:
+        - {color: "#e2e8f0", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
 
-  <!-- LINK LABEL CARDS -->
-  <g id="card_transporte_dm">
-    <rect x="355" y="174" width="214" height="60" rx="10" fill="#081827" stroke="#1e3a5f" stroke-width="1.2"/>
-    <text x="372" y="195" fill="#64748b" font-size="10" font-family="'Courier New', monospace">TRANSPORTE ⇄ DM</text>
-    <text x="372" y="218" fill="#22d3ee" font-size="12" font-family="'Courier New', monospace">TX</text>
-    <text id="label_transporte_dm_tx" x="420" y="218" fill="#e2e8f0" font-size="15" font-family="'Courier New', monospace" font-weight="bold"></text>
-    <text x="492" y="218" fill="#94a3b8" font-size="12" font-family="'Courier New', monospace">RX</text>
-    <text id="label_transporte_dm_rx" x="535" y="218" fill="#e2e8f0" font-size="15" font-family="'Courier New', monospace" font-weight="bold" text-anchor="end"></text>
-  </g>
+  # ===============================
+  # DM4370 ⇄ OLT - 10G
+  # ===============================
+  link_dm_olt_tx:
+    dataRef: tx_dm_olt
+    strokeColor:
+      thresholds:
+        - {color: "#22d3ee", level: 0}
+        - {color: "#f59e0b", level: 7000000000}
+        - {color: "#ef4444", level: 9000000000}
+  label_dm_olt_tx:
+    dataRef: tx_dm_olt
+    label:
+      units: "bps"
+      decimalPoints: 2
+    labelColor:
+      thresholds:
+        - {color: "#e2e8f0", level: 0}
+        - {color: "#f59e0b", level: 7000000000}
+        - {color: "#ef4444", level: 9000000000}
 
-  <g id="card_dm_olt">
-    <rect x="780" y="350" width="216" height="60" rx="10" fill="#081827" stroke="#1e3a5f" stroke-width="1.2"/>
-    <text x="797" y="371" fill="#64748b" font-size="10" font-family="'Courier New', monospace">DM ⇄ OLT NOKIA</text>
-    <text x="797" y="394" fill="#22d3ee" font-size="12" font-family="'Courier New', monospace">TX</text>
-    <text id="label_dm_olt_tx" x="845" y="394" fill="#e2e8f0" font-size="15" font-family="'Courier New', monospace" font-weight="bold"></text>
-    <text x="917" y="394" fill="#94a3b8" font-size="12" font-family="'Courier New', monospace">RX</text>
-    <text id="label_dm_olt_rx" x="965" y="394" fill="#e2e8f0" font-size="15" font-family="'Courier New', monospace" font-weight="bold" text-anchor="end"></text>
-  </g>
+  link_dm_olt_rx:
+    dataRef: rx_dm_olt
+    strokeColor:
+      thresholds:
+        - {color: "#64748b", level: 0}
+        - {color: "#f59e0b", level: 7000000000}
+        - {color: "#ef4444", level: 9000000000}
+  label_dm_olt_rx:
+    dataRef: rx_dm_olt
+    label:
+      units: "bps"
+      decimalPoints: 2
+    labelColor:
+      thresholds:
+        - {color: "#e2e8f0", level: 0}
+        - {color: "#f59e0b", level: 7000000000}
+        - {color: "#ef4444", level: 9000000000}
 
-  <g id="card_olt_rb750">
-    <rect x="386" y="597" width="214" height="60" rx="10" fill="#081827" stroke="#1e3a5f" stroke-width="1.2"/>
-    <text x="403" y="618" fill="#64748b" font-size="10" font-family="'Courier New', monospace">OLT ⇄ RB750</text>
-    <text x="403" y="641" fill="#22d3ee" font-size="12" font-family="'Courier New', monospace">TX</text>
-    <text id="label_olt_rb750_tx" x="451" y="641" fill="#e2e8f0" font-size="15" font-family="'Courier New', monospace" font-weight="bold"></text>
-    <text x="523" y="641" fill="#94a3b8" font-size="12" font-family="'Courier New', monospace">RX</text>
-    <text id="label_olt_rb750_rx" x="570" y="641" fill="#e2e8f0" font-size="15" font-family="'Courier New', monospace" font-weight="bold" text-anchor="end"></text>
-  </g>
+  # ===============================
+  # OLT ⇄ RB750 - 1G
+  # Só aparece quando tx_olt_rb750 / rx_olt_rb750 existirem no painel.
+  # ===============================
+  link_olt_rb750_tx:
+    dataRef: tx_olt_rb750
+    strokeColor:
+      thresholds:
+        - {color: "#22d3ee", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
+  label_olt_rb750_tx:
+    dataRef: tx_olt_rb750
+    label:
+      units: "bps"
+      decimalPoints: 2
+    labelColor:
+      thresholds:
+        - {color: "#e2e8f0", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
 
-  <g id="card_olt_loja">
-    <rect x="905" y="597" width="214" height="60" rx="10" fill="#081827" stroke="#1e3a5f" stroke-width="1.2"/>
-    <text x="922" y="618" fill="#64748b" font-size="10" font-family="'Courier New', monospace">OLT ⇄ LOJA</text>
-    <text x="922" y="641" fill="#22d3ee" font-size="12" font-family="'Courier New', monospace">TX</text>
-    <text id="label_olt_loja_tx" x="970" y="641" fill="#e2e8f0" font-size="15" font-family="'Courier New', monospace" font-weight="bold"></text>
-    <text x="1042" y="641" fill="#94a3b8" font-size="12" font-family="'Courier New', monospace">RX</text>
-    <text id="label_olt_loja_rx" x="1089" y="641" fill="#e2e8f0" font-size="15" font-family="'Courier New', monospace" font-weight="bold" text-anchor="end"></text>
-  </g>
+  link_olt_rb750_rx:
+    dataRef: rx_olt_rb750
+    strokeColor:
+      thresholds:
+        - {color: "#64748b", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
+  label_olt_rb750_rx:
+    dataRef: rx_olt_rb750
+    label:
+      units: "bps"
+      decimalPoints: 2
+    labelColor:
+      thresholds:
+        - {color: "#e2e8f0", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
 
-  <!-- NODES -->
-  <g id="node_transporte" filter="url(#softShadow)">
-    <rect id="node_transporte_box" x="88" y="180" width="220" height="148" rx="14" fill="url(#nodeBlue)" stroke="#2563eb" stroke-width="2"/>
-    <rect x="88" y="180" width="220" height="36" rx="14" fill="#1d4ed8" opacity="0.68"/>
-    <rect x="88" y="203" width="220" height="13" fill="#1d4ed8" opacity="0.68"/>
-    <text id="node_transporte_title" x="198" y="204" fill="#ffffff" font-size="16" font-family="Arial" font-weight="bold" text-anchor="middle">TRANSPORTE ALT</text>
-    <text x="108" y="242" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">ORIGEM</text>
-    <text x="108" y="262" fill="#e2e8f0" font-size="14" font-family="Arial">Naviraí / MS</text>
-    <text x="108" y="289" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">CAPACIDADE</text>
-    <text x="108" y="309" fill="#e2e8f0" font-size="13" font-family="Arial">1G monitorado</text>
-  </g>
+  # ===============================
+  # OLT ⇄ LOJA - 1G
+  # Só aparece quando tx_olt_loja / rx_olt_loja existirem no painel.
+  # ===============================
+  link_olt_loja_tx:
+    dataRef: tx_olt_loja
+    strokeColor:
+      thresholds:
+        - {color: "#22d3ee", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
+  label_olt_loja_tx:
+    dataRef: tx_olt_loja
+    label:
+      units: "bps"
+      decimalPoints: 2
+    labelColor:
+      thresholds:
+        - {color: "#e2e8f0", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
 
-  <g id="node_dm4370" filter="url(#softShadow)">
-    <rect id="node_dm4370_box" x="545" y="150" width="360" height="156" rx="16" fill="url(#nodeGreen)" stroke="#16a34a" stroke-width="2"/>
-    <rect x="545" y="150" width="360" height="38" rx="16" fill="#16a34a" opacity="0.56"/>
-    <rect x="545" y="174" width="360" height="14" fill="#16a34a" opacity="0.56"/>
-    <text id="node_dm4370_title" x="725" y="175" fill="#ffffff" font-size="18" font-family="Arial" font-weight="bold" text-anchor="middle">DM4370-ITQ</text>
-    <text x="570" y="215" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">IP</text>
-    <text x="650" y="215" fill="#4ade80" font-size="13" font-family="'Courier New', monospace">10.255.254.0</text>
-    <text x="570" y="239" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">SYSNAME</text>
-    <text x="650" y="239" fill="#e2e8f0" font-size="13" font-family="'Courier New', monospace">DM-NVI-TQI</text>
-    <text x="570" y="263" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">OLT</text>
-    <text x="650" y="263" fill="#60a5fa" font-size="12" font-family="'Courier New', monospace">ten-gigabit-ethernet-1/1/2</text>
-    <text x="570" y="286" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">TRANS</text>
-    <text x="650" y="286" fill="#60a5fa" font-size="12" font-family="'Courier New', monospace">ten-gigabit-ethernet-1/1/4</text>
-  </g>
-
-  <g id="node_olt" filter="url(#softShadow)">
-    <rect id="node_olt_box" x="545" y="474" width="360" height="156" rx="16" fill="url(#nodeGreen)" stroke="#16a34a" stroke-width="2"/>
-    <rect x="545" y="474" width="360" height="38" rx="16" fill="#16a34a" opacity="0.56"/>
-    <rect x="545" y="498" width="360" height="14" fill="#16a34a" opacity="0.56"/>
-    <text id="node_olt_title" x="725" y="499" fill="#ffffff" font-size="18" font-family="Arial" font-weight="bold" text-anchor="middle">OLT NOKIA ITAQUIRAÍ</text>
-    <text x="570" y="539" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">IP</text>
-    <text x="650" y="539" fill="#4ade80" font-size="13" font-family="'Courier New', monospace">172.26.1.10</text>
-    <text x="570" y="563" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">COMMUNITY</text>
-    <text x="650" y="563" fill="#e2e8f0" font-size="13" font-family="'Courier New', monospace">NETMAN</text>
-    <text x="570" y="587" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">UPLINK</text>
-    <text x="650" y="587" fill="#60a5fa" font-size="12" font-family="'Courier New', monospace">nt-a:xfp:1</text>
-    <text x="570" y="610" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">SERVIÇOS</text>
-    <text x="650" y="610" fill="#60a5fa" font-size="12" font-family="'Courier New', monospace">RB750 + Loja via fibra</text>
-  </g>
-
-  <g id="node_rb750" filter="url(#softShadow)">
-    <rect id="node_rb750_box" x="140" y="690" width="300" height="130" rx="16" fill="url(#nodeGreen)" stroke="#16a34a" stroke-width="2"/>
-    <rect x="140" y="690" width="300" height="34" rx="16" fill="#16a34a" opacity="0.56"/>
-    <rect x="140" y="711" width="300" height="13" fill="#16a34a" opacity="0.56"/>
-    <text id="node_rb750_title" x="290" y="713" fill="#ffffff" font-size="16" font-family="Arial" font-weight="bold" text-anchor="middle">RB750-CONTAINER-ITQ</text>
-    <text x="165" y="752" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">IP</text>
-    <text x="235" y="752" fill="#4ade80" font-size="13" font-family="'Courier New', monospace">186.226.204.10</text>
-    <text x="165" y="778" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">UPLINK</text>
-    <text x="235" y="778" fill="#60a5fa" font-size="12" font-family="'Courier New', monospace">ether4: UPLINK-ONU</text>
-    <text x="165" y="802" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">FUNÇÃO</text>
-    <text x="235" y="802" fill="#64748b" font-size="12" font-family="'Courier New', monospace">Container / Base ITA</text>
-  </g>
-
-  <g id="node_loja" filter="url(#softShadow)">
-    <rect id="node_loja_box" x="1030" y="690" width="300" height="130" rx="16" fill="url(#nodeGreen)" stroke="#16a34a" stroke-width="2"/>
-    <rect x="1030" y="690" width="300" height="34" rx="16" fill="#16a34a" opacity="0.56"/>
-    <rect x="1030" y="711" width="300" height="13" fill="#16a34a" opacity="0.56"/>
-    <text id="node_loja_title" x="1180" y="713" fill="#ffffff" font-size="16" font-family="Arial" font-weight="bold" text-anchor="middle">LOJA ITAQUIRAÍ</text>
-    <text x="1055" y="752" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">IP</text>
-    <text x="1125" y="752" fill="#4ade80" font-size="13" font-family="'Courier New', monospace">186.226.204.13</text>
-    <text x="1055" y="778" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">ACESSO</text>
-    <text x="1125" y="778" fill="#60a5fa" font-size="12" font-family="'Courier New', monospace">Fibra PPPoE</text>
-    <text x="1055" y="802" fill="#94a3b8" font-size="11" font-family="'Courier New', monospace">FUNÇÃO</text>
-    <text x="1125" y="802" fill="#64748b" font-size="12" font-family="'Courier New', monospace">Loja / Escritório</text>
-  </g>
-
-  <!-- SIDE INFO -->
-  <g id="legend">
-    <rect x="1280" y="132" width="280" height="250" rx="14" fill="#071321" stroke="#1e3a5f" stroke-width="1.2"/>
-    <rect x="1280" y="132" width="280" height="38" rx="14" fill="#0a1628"/>
-    <rect x="1280" y="156" width="280" height="14" fill="#0a1628"/>
-    <text x="1300" y="157" fill="#94a3b8" font-size="13" font-family="'Courier New', monospace" font-weight="bold">LEGENDA OPERACIONAL</text>
-    <circle cx="1304" cy="198" r="8" fill="#16a34a"/>
-    <text x="1324" y="203" fill="#d1d5db" font-size="14" font-family="Arial">Equipamento UP</text>
-    <circle cx="1304" cy="230" r="8" fill="#f59e0b"/>
-    <text x="1324" y="235" fill="#d1d5db" font-size="14" font-family="Arial">Uso alto / atenção</text>
-    <circle cx="1304" cy="262" r="8" fill="#ef4444"/>
-    <text x="1324" y="267" fill="#d1d5db" font-size="14" font-family="Arial">Saturado ou DOWN</text>
-    <line x1="1296" y1="302" x2="1340" y2="302" stroke="#22d3ee" stroke-width="6"/>
-    <text x="1352" y="307" fill="#d1d5db" font-size="14" font-family="Arial">TX principal</text>
-    <line x1="1296" y1="335" x2="1340" y2="335" stroke="#64748b" stroke-width="3" opacity="0.55"/>
-    <text x="1352" y="340" fill="#d1d5db" font-size="14" font-family="Arial">RX retorno</text>
-  </g>
-
-  <g id="capacity">
-    <rect x="1280" y="410" width="280" height="190" rx="14" fill="#071321" stroke="#1e3a5f" stroke-width="1.2"/>
-    <text x="1300" y="445" fill="#94a3b8" font-size="13" font-family="'Courier New', monospace" font-weight="bold">CAPACIDADES</text>
-    <line x1="1300" y1="464" x2="1540" y2="464" stroke="#1e3a5f"/>
-    <text x="1300" y="492" fill="#64748b" font-size="12" font-family="'Courier New', monospace">TRANSPORTE ⇄ DM</text>
-    <text x="1538" y="492" fill="#e2e8f0" font-size="12" font-family="'Courier New', monospace" text-anchor="end">1G</text>
-    <text x="1300" y="522" fill="#64748b" font-size="12" font-family="'Courier New', monospace">DM ⇄ OLT</text>
-    <text x="1538" y="522" fill="#e2e8f0" font-size="12" font-family="'Courier New', monospace" text-anchor="end">10G</text>
-    <text x="1300" y="552" fill="#64748b" font-size="12" font-family="'Courier New', monospace">OLT ⇄ RB750</text>
-    <text x="1538" y="552" fill="#e2e8f0" font-size="12" font-family="'Courier New', monospace" text-anchor="end">1G</text>
-    <text x="1300" y="582" fill="#64748b" font-size="12" font-family="'Courier New', monospace">OLT ⇄ LOJA</text>
-    <text x="1538" y="582" fill="#e2e8f0" font-size="12" font-family="'Courier New', monospace" text-anchor="end">1G</text>
-  </g>
-</svg>
+  link_olt_loja_rx:
+    dataRef: rx_olt_loja
+    strokeColor:
+      thresholds:
+        - {color: "#64748b", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
+  label_olt_loja_rx:
+    dataRef: rx_olt_loja
+    label:
+      units: "bps"
+      decimalPoints: 2
+    labelColor:
+      thresholds:
+        - {color: "#e2e8f0", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
