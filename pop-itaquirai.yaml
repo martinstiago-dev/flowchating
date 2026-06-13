@@ -14,9 +14,9 @@ cells:
     dataRef: icmp_transporte
     colorize:
       thresholds:
-        - { color: "#16a34a", level: 0 }      # UP - verde
-        - { color: "#ca8a04", level: 0.5 }    # degradado - amarelo
-        - { color: "#dc2626", level: 1 }      # DOWN - vermelho
+        - { color: "#16a34a", level: 0 }
+        - { color: "#ca8a04", level: 0.5 }
+        - { color: "#dc2626", level: 1 }
 
   node_dm4370_box:
     label:
@@ -64,17 +64,17 @@ cells:
     dataRef: tx_transp
     colorize:
       thresholds:
-        - { color: "#2dd4bf", level: 0 }         # normal - teal
-        - { color: "#ca8a04", level: 700000000 }  # 700 Mbps - amarelo
-        - { color: "#dc2626", level: 900000000 }  # 900 Mbps - vermelho
+        - { color: "#2dd4bf", level: 0 }
+        - { color: "#ca8a04", level: 700000000 }
+        - { color: "#dc2626", level: 900000000 }
 
   link_dm_olt:
     dataRef: tx_dm_olt
     colorize:
       thresholds:
         - { color: "#2dd4bf", level: 0 }
-        - { color: "#ca8a04", level: 7000000000 }  # 7 Gbps
-        - { color: "#dc2626", level: 9000000000 }  # 9 Gbps
+        - { color: "#ca8a04", level: 7000000000 }
+        - { color: "#dc2626", level: 9000000000 }
 
   link_olt_rb750:
     dataRef: tx_olt_rb
@@ -127,19 +127,19 @@ cells:
       dataRefs: [tx_olt_loja, rx_olt_loja]
 
 # ─── DATA MAPPINGS ─────────────────────────────────────
-# Mapeie os refIds do Zabbix para os dataRefs acima
+# Nome das séries = legendFormat configurado nas queries do Grafana
 
 dataRefs:
-  tx_transp:    { refId: C }   # DM4370 ten-gig-1/1/4 Bits sent (TRANSP TX)
-  rx_transp:    { refId: D }   # DM4370 ten-gig-1/1/4 Bits received (TRANSP RX)
-  tx_dm_olt:    { refId: A }   # DM4370 ten-gig-1/1/2 Bits sent (OLT TX)
-  rx_dm_olt:    { refId: B }   # DM4370 ten-gig-1/1/2 Bits received (OLT RX)
-  tx_olt_rb:    { refId: E }   # OLT porta RB750 TX
-  rx_olt_rb:    { refId: F }   # OLT porta RB750 RX
-  tx_olt_loja:  { refId: G }   # OLT porta Loja TX
-  rx_olt_loja:  { refId: H }   # OLT porta Loja RX
-  icmp_transporte: { refId: I }
-  icmp_dm:      { refId: J }
-  icmp_olt:     { refId: K }
-  icmp_rb750:   { refId: L }
-  icmp_loja:    { refId: M }
+  tx_transp:       { seriesName: "tx_transp" }
+  rx_transp:       { seriesName: "rx_transp" }
+  tx_dm_olt:       { seriesName: "tx_dm_olt" }
+  rx_dm_olt:       { seriesName: "rx_dm_olt" }
+  tx_olt_rb:       { seriesName: "tx_olt_rb" }
+  rx_olt_rb:       { seriesName: "rx_olt_rb" }
+  tx_olt_loja:     { seriesName: "tx_olt_loja" }
+  rx_olt_loja:     { seriesName: "rx_olt_loja" }
+  icmp_transporte: { seriesName: "icmp_transporte" }
+  icmp_dm:         { seriesName: "icmp_dm" }
+  icmp_olt:        { seriesName: "icmp_olt" }
+  icmp_rb750:      { seriesName: "icmp_rb750" }
+  icmp_loja:       { seriesName: "icmp_loja" }
