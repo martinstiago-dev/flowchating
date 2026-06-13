@@ -1,0 +1,117 @@
+gradientMode: false
+animationDurationSecs: 3
+
+cells:
+  node_transporte_box:
+    dataRef: tx_transp
+    colorize:
+      thresholds:
+        - { color: "#16a34a", level: 0 }
+        - { color: "#ca8a04", level: 700000000 }
+        - { color: "#dc2626", level: 900000000 }
+
+  node_dm4370_box:
+    dataRef: tx_dm_olt
+    colorize:
+      thresholds:
+        - { color: "#16a34a", level: 0 }
+        - { color: "#ca8a04", level: 7000000000 }
+        - { color: "#dc2626", level: 9000000000 }
+
+  node_olt_box:
+    dataRef: tx_dm_olt
+    colorize:
+      thresholds:
+        - { color: "#16a34a", level: 0 }
+        - { color: "#ca8a04", level: 7000000000 }
+        - { color: "#dc2626", level: 9000000000 }
+
+  node_rb750_box:
+    dataRef: tx_olt_rb
+    colorize:
+      thresholds:
+        - { color: "#16a34a", level: 0 }
+        - { color: "#ca8a04", level: 700000000 }
+        - { color: "#dc2626", level: 900000000 }
+
+  node_loja_box:
+    dataRef: tx_olt_loja
+    colorize:
+      thresholds:
+        - { color: "#16a34a", level: 0 }
+        - { color: "#ca8a04", level: 700000000 }
+        - { color: "#dc2626", level: 900000000 }
+
+  link_transporte_dm:
+    dataRef: tx_transp
+    colorize:
+      thresholds:
+        - { color: "#2dd4bf", level: 0 }
+        - { color: "#ca8a04", level: 700000000 }
+        - { color: "#dc2626", level: 900000000 }
+
+  link_dm_olt:
+    dataRef: tx_dm_olt
+    colorize:
+      thresholds:
+        - { color: "#2dd4bf", level: 0 }
+        - { color: "#ca8a04", level: 7000000000 }
+        - { color: "#dc2626", level: 9000000000 }
+
+  link_olt_rb750:
+    dataRef: tx_olt_rb
+    colorize:
+      thresholds:
+        - { color: "#2dd4bf", level: 0 }
+        - { color: "#ca8a04", level: 700000000 }
+        - { color: "#dc2626", level: 900000000 }
+
+  link_olt_loja:
+    dataRef: tx_olt_loja
+    colorize:
+      thresholds:
+        - { color: "#2dd4bf", level: 0 }
+        - { color: "#ca8a04", level: 700000000 }
+        - { color: "#dc2626", level: 900000000 }
+
+  label_transporte_dm:
+    label:
+      units: Mbps
+      decimalPoints: 1
+      valueFactor: 0.000001
+      separator: " / "
+      dataRefs: [tx_transp, rx_transp]
+
+  label_dm_olt:
+    label:
+      units: Mbps
+      decimalPoints: 1
+      valueFactor: 0.000001
+      separator: " / "
+      dataRefs: [tx_dm_olt, rx_dm_olt]
+
+  label_olt_rb750:
+    label:
+      units: Mbps
+      decimalPoints: 2
+      valueFactor: 0.000001
+      separator: " / "
+      dataRefs: [tx_olt_rb, rx_olt_rb]
+
+  label_olt_loja:
+    label:
+      units: Mbps
+      decimalPoints: 2
+      valueFactor: 0.000001
+      separator: " / "
+      dataRefs: [tx_olt_loja, rx_olt_loja]
+
+dataRefs:
+  tx_transp:   { refId: C }
+  rx_transp:   { refId: D }
+  tx_dm_olt:   { refId: A }
+  rx_dm_olt:   { refId: B }
+  tx_olt_rb:   { refId: E }
+  rx_olt_rb:   { refId: F }
+  tx_olt_loja: { refId: G }
+  rx_olt_loja: { refId: H }
