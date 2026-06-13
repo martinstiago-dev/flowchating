@@ -1,141 +1,208 @@
-# POP Itaquiraí - Flow Panel Config
-# andrewbmchugh-flow-panel
-# dataRefs mapeados pelo nome exato da série (displayNameFromDS)
-
-gradientMode: false
-animationDurationSecs: 3
+---
+cellIdPreamble: ""
+gradientMode: "none"
+animationDurationSecs: 2
 
 cells:
+  # ============================================================
+  # STATUS DOS EQUIPAMENTOS
+  # Esperado:
+  # 0 = OK / UP
+  # 1 = Atenção
+  # 2 = Problema / DOWN
+  # ============================================================
 
   node_transporte_box:
-    dataRef: icmp_transporte
-    colorize:
+    dataRef: status_transporte
+    fillColor:
       thresholds:
-        - { color: "#16a34a", level: 0 }
-        - { color: "#ca8a04", level: 0.5 }
-        - { color: "#dc2626", level: 1 }
+        - {color: "#0f2744", level: 0}
+        - {color: "#92400e", level: 1}
+        - {color: "#7f1d1d", level: 2}
+    strokeColor:
+      thresholds:
+        - {color: "#1d4ed8", level: 0}
+        - {color: "#f59e0b", level: 1}
+        - {color: "#ef4444", level: 2}
+
+  node_transporte_title:
+    dataRef: status_transporte
+    labelColor:
+      thresholds:
+        - {color: "#ffffff", level: 0}
+        - {color: "#fde68a", level: 1}
+        - {color: "#fecaca", level: 2}
 
   node_dm4370_box:
-    dataRef: icmp_dm
-    colorize:
+    dataRef: status_dm4370
+    fillColor:
       thresholds:
-        - { color: "#16a34a", level: 0 }
-        - { color: "#ca8a04", level: 0.5 }
-        - { color: "#dc2626", level: 1 }
+        - {color: "#0d2218", level: 0}
+        - {color: "#422006", level: 1}
+        - {color: "#450a0a", level: 2}
+    strokeColor:
+      thresholds:
+        - {color: "#16a34a", level: 0}
+        - {color: "#f59e0b", level: 1}
+        - {color: "#ef4444", level: 2}
+
+  node_dm4370_title:
+    dataRef: status_dm4370
+    labelColor:
+      thresholds:
+        - {color: "#ffffff", level: 0}
+        - {color: "#fde68a", level: 1}
+        - {color: "#fecaca", level: 2}
 
   node_olt_box:
-    dataRef: icmp_olt
-    colorize:
+    dataRef: status_olt
+    fillColor:
       thresholds:
-        - { color: "#16a34a", level: 0 }
-        - { color: "#ca8a04", level: 0.5 }
-        - { color: "#dc2626", level: 1 }
+        - {color: "#0d2218", level: 0}
+        - {color: "#422006", level: 1}
+        - {color: "#450a0a", level: 2}
+    strokeColor:
+      thresholds:
+        - {color: "#16a34a", level: 0}
+        - {color: "#f59e0b", level: 1}
+        - {color: "#ef4444", level: 2}
+
+  node_olt_title:
+    dataRef: status_olt
+    labelColor:
+      thresholds:
+        - {color: "#ffffff", level: 0}
+        - {color: "#fde68a", level: 1}
+        - {color: "#fecaca", level: 2}
 
   node_rb750_box:
-    dataRef: icmp_rb750
-    colorize:
+    dataRef: status_rb750
+    fillColor:
       thresholds:
-        - { color: "#16a34a", level: 0 }
-        - { color: "#ca8a04", level: 0.5 }
-        - { color: "#dc2626", level: 1 }
+        - {color: "#0d2218", level: 0}
+        - {color: "#422006", level: 1}
+        - {color: "#450a0a", level: 2}
+    strokeColor:
+      thresholds:
+        - {color: "#16a34a", level: 0}
+        - {color: "#f59e0b", level: 1}
+        - {color: "#ef4444", level: 2}
+
+  node_rb750_title:
+    dataRef: status_rb750
+    labelColor:
+      thresholds:
+        - {color: "#ffffff", level: 0}
+        - {color: "#fde68a", level: 1}
+        - {color: "#fecaca", level: 2}
 
   node_loja_box:
-    dataRef: icmp_loja
-    colorize:
+    dataRef: status_loja
+    fillColor:
       thresholds:
-        - { color: "#16a34a", level: 0 }
-        - { color: "#ca8a04", level: 0.5 }
-        - { color: "#dc2626", level: 1 }
+        - {color: "#0d2218", level: 0}
+        - {color: "#422006", level: 1}
+        - {color: "#450a0a", level: 2}
+    strokeColor:
+      thresholds:
+        - {color: "#16a34a", level: 0}
+        - {color: "#f59e0b", level: 1}
+        - {color: "#ef4444", level: 2}
 
+  node_loja_title:
+    dataRef: status_loja
+    labelColor:
+      thresholds:
+        - {color: "#ffffff", level: 0}
+        - {color: "#fde68a", level: 1}
+        - {color: "#fecaca", level: 2}
+
+  # ============================================================
+  # LINKS PRINCIPAIS
+  # Valores esperados em bps vindo do Zabbix.
+  # Se seus itens já vêm em bps, mantenha assim.
+  # ============================================================
+
+  # TRANSPORTE ALT -> DM4370
+  # Capacidade considerada: 1 Gbps
   link_transporte_dm:
-    dataRef: tx_transp
-    colorize:
+    dataRef: tx_transporte_dm
+    strokeColor:
       thresholds:
-        - { color: "#2dd4bf", level: 0 }
-        - { color: "#ca8a04", level: 700000000 }
-        - { color: "#dc2626", level: 900000000 }
-
-  link_dm_olt:
-    dataRef: tx_dm_olt
-    colorize:
-      thresholds:
-        - { color: "#2dd4bf", level: 0 }
-        - { color: "#ca8a04", level: 7000000000 }
-        - { color: "#dc2626", level: 9000000000 }
-
-  link_olt_rb750:
-    dataRef: tx_olt_rb
-    colorize:
-      thresholds:
-        - { color: "#2dd4bf", level: 0 }
-        - { color: "#ca8a04", level: 700000000 }
-        - { color: "#dc2626", level: 900000000 }
-
-  link_olt_loja:
-    dataRef: tx_olt_loja
-    colorize:
-      thresholds:
-        - { color: "#2dd4bf", level: 0 }
-        - { color: "#ca8a04", level: 700000000 }
-        - { color: "#dc2626", level: 900000000 }
+        - {color: "#2dd4bf", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
 
   label_transporte_dm:
+    dataRef: tx_transporte_dm
     label:
-      units: Mbps
-      decimalPoints: 1
-      valueFactor: 0.000001
-      separator: " / "
-      dataRefs: [tx_transp, rx_transp]
+      units: "bps"
+      decimalPoints: 2
+    labelColor:
+      thresholds:
+        - {color: "#e2e8f0", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
+
+  # DM4370 -> OLT NOKIA
+  # Capacidade considerada: 10 Gbps
+  link_dm_olt:
+    dataRef: tx_dm_olt
+    strokeColor:
+      thresholds:
+        - {color: "#2dd4bf", level: 0}
+        - {color: "#f59e0b", level: 7000000000}
+        - {color: "#ef4444", level: 9000000000}
 
   label_dm_olt:
+    dataRef: tx_dm_olt
     label:
-      units: Mbps
-      decimalPoints: 1
-      valueFactor: 0.000001
-      separator: " / "
-      dataRefs: [tx_dm_olt, rx_dm_olt]
+      units: "bps"
+      decimalPoints: 2
+    labelColor:
+      thresholds:
+        - {color: "#e2e8f0", level: 0}
+        - {color: "#f59e0b", level: 7000000000}
+        - {color: "#ef4444", level: 9000000000}
+
+  # OLT -> RB750 CONTAINER
+  # Capacidade considerada: 1 Gbps
+  link_olt_rb750:
+    dataRef: tx_olt_rb750
+    strokeColor:
+      thresholds:
+        - {color: "#2dd4bf", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
 
   label_olt_rb750:
+    dataRef: tx_olt_rb750
     label:
-      units: Mbps
+      units: "bps"
       decimalPoints: 2
-      valueFactor: 0.000001
-      separator: " / "
-      dataRefs: [tx_olt_rb, rx_olt_rb]
+    labelColor:
+      thresholds:
+        - {color: "#e2e8f0", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
+
+  # OLT -> LOJA ITAQUIRAI
+  # Capacidade considerada: 1 Gbps
+  link_olt_loja:
+    dataRef: tx_olt_loja
+    strokeColor:
+      thresholds:
+        - {color: "#2dd4bf", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
 
   label_olt_loja:
+    dataRef: tx_olt_loja
     label:
-      units: Mbps
+      units: "bps"
       decimalPoints: 2
-      valueFactor: 0.000001
-      separator: " / "
-      dataRefs: [tx_olt_loja, rx_olt_loja]
-
-# Nome exato das séries conforme retornado pelo Zabbix datasource
-dataRefs:
-  tx_dm_olt:
-    seriesMatch: "Interface ten-gigabit-ethernet-1/1/2(OLT-NOKIA): Bits sent"
-  rx_dm_olt:
-    seriesMatch: "Interface ten-gigabit-ethernet-1/1/2(OLT-NOKIA): Bits received"
-  tx_transp:
-    seriesMatch: "Interface ten-gigabit-ethernet-1/1/4(TRANSP ALT ITQ-NV): Bits sent"
-  rx_transp:
-    seriesMatch: "Interface ten-gigabit-ethernet-1/1/4(TRANSP ALT ITQ-NV): Bits received"
-  tx_olt_rb:
-    seriesMatch: "/.*(Bits sent).*/"
-  rx_olt_rb:
-    seriesMatch: "/.*(Bits received).*/"
-  tx_olt_loja:
-    seriesMatch: "/.*(Bits sent).*/"
-  rx_olt_loja:
-    seriesMatch: "/.*(Bits received).*/"
-  icmp_transporte:
-    seriesMatch: "ICMP ping"
-  icmp_dm:
-    seriesMatch: "ICMP ping"
-  icmp_olt:
-    seriesMatch: "ICMP ping"
-  icmp_rb750:
-    seriesMatch: "ICMP ping"
-  icmp_loja:
-    seriesMatch: "ICMP ping"
+    labelColor:
+      thresholds:
+        - {color: "#e2e8f0", level: 0}
+        - {color: "#f59e0b", level: 700000000}
+        - {color: "#ef4444", level: 900000000}
