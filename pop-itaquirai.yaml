@@ -1,5 +1,6 @@
 # POP Itaquiraí - Flow Panel Config
-# Gerado para andrewbmchugh-flow-panel
+# andrewbmchugh-flow-panel
+# dataRefs mapeados pelo nome exato da série (displayNameFromDS)
 
 gradientMode: false
 animationDurationSecs: 3
@@ -7,8 +8,6 @@ animationDurationSecs: 3
 cells:
 
   node_transporte_box:
-    label:
-      separator: ":"
     dataRef: icmp_transporte
     colorize:
       thresholds:
@@ -17,8 +16,6 @@ cells:
         - { color: "#dc2626", level: 1 }
 
   node_dm4370_box:
-    label:
-      separator: ":"
     dataRef: icmp_dm
     colorize:
       thresholds:
@@ -27,8 +24,6 @@ cells:
         - { color: "#dc2626", level: 1 }
 
   node_olt_box:
-    label:
-      separator: ":"
     dataRef: icmp_olt
     colorize:
       thresholds:
@@ -37,8 +32,6 @@ cells:
         - { color: "#dc2626", level: 1 }
 
   node_rb750_box:
-    label:
-      separator: ":"
     dataRef: icmp_rb750
     colorize:
       thresholds:
@@ -47,8 +40,6 @@ cells:
         - { color: "#dc2626", level: 1 }
 
   node_loja_box:
-    label:
-      separator: ":"
     dataRef: icmp_loja
     colorize:
       thresholds:
@@ -120,18 +111,31 @@ cells:
       separator: " / "
       dataRefs: [tx_olt_loja, rx_olt_loja]
 
-# dataRefs mapeados pelo refId da query
+# Nome exato das séries conforme retornado pelo Zabbix datasource
 dataRefs:
-  tx_dm_olt:       { refId: A }
-  rx_dm_olt:       { refId: B }
-  tx_transp:       { refId: C }
-  rx_transp:       { refId: D }
-  tx_olt_rb:       { refId: E }
-  rx_olt_rb:       { refId: F }
-  tx_olt_loja:     { refId: G }
-  rx_olt_loja:     { refId: H }
-  icmp_transporte: { refId: I }
-  icmp_dm:         { refId: J }
-  icmp_olt:        { refId: K }
-  icmp_rb750:      { refId: L }
-  icmp_loja:       { refId: M }
+  tx_dm_olt:
+    seriesMatch: "Interface ten-gigabit-ethernet-1/1/2(OLT-NOKIA): Bits sent"
+  rx_dm_olt:
+    seriesMatch: "Interface ten-gigabit-ethernet-1/1/2(OLT-NOKIA): Bits received"
+  tx_transp:
+    seriesMatch: "Interface ten-gigabit-ethernet-1/1/4(TRANSP ALT ITQ-NV): Bits sent"
+  rx_transp:
+    seriesMatch: "Interface ten-gigabit-ethernet-1/1/4(TRANSP ALT ITQ-NV): Bits received"
+  tx_olt_rb:
+    seriesMatch: "/.*(Bits sent).*/"
+  rx_olt_rb:
+    seriesMatch: "/.*(Bits received).*/"
+  tx_olt_loja:
+    seriesMatch: "/.*(Bits sent).*/"
+  rx_olt_loja:
+    seriesMatch: "/.*(Bits received).*/"
+  icmp_transporte:
+    seriesMatch: "ICMP ping"
+  icmp_dm:
+    seriesMatch: "ICMP ping"
+  icmp_olt:
+    seriesMatch: "ICMP ping"
+  icmp_rb750:
+    seriesMatch: "ICMP ping"
+  icmp_loja:
+    seriesMatch: "ICMP ping"
