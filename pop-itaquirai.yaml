@@ -6,8 +6,6 @@ animationDurationSecs: 3
 
 cells:
 
-  # ─── NODES ───────────────────────────────────────────
-
   node_transporte_box:
     label:
       separator: ":"
@@ -58,8 +56,6 @@ cells:
         - { color: "#ca8a04", level: 0.5 }
         - { color: "#dc2626", level: 1 }
 
-  # ─── LINKS ───────────────────────────────────────────
-
   link_transporte_dm:
     dataRef: tx_transp
     colorize:
@@ -91,8 +87,6 @@ cells:
         - { color: "#2dd4bf", level: 0 }
         - { color: "#ca8a04", level: 700000000 }
         - { color: "#dc2626", level: 900000000 }
-
-  # ─── LABELS ──────────────────────────────────────────
 
   label_transporte_dm:
     label:
@@ -126,20 +120,18 @@ cells:
       separator: " / "
       dataRefs: [tx_olt_loja, rx_olt_loja]
 
-# ─── DATA MAPPINGS ─────────────────────────────────────
-# Nome das séries = legendFormat configurado nas queries do Grafana
-
+# dataRefs mapeados pelo refId da query
 dataRefs:
-  tx_transp:       { seriesName: "tx_transp" }
-  rx_transp:       { seriesName: "rx_transp" }
-  tx_dm_olt:       { seriesName: "tx_dm_olt" }
-  rx_dm_olt:       { seriesName: "rx_dm_olt" }
-  tx_olt_rb:       { seriesName: "tx_olt_rb" }
-  rx_olt_rb:       { seriesName: "rx_olt_rb" }
-  tx_olt_loja:     { seriesName: "tx_olt_loja" }
-  rx_olt_loja:     { seriesName: "rx_olt_loja" }
-  icmp_transporte: { seriesName: "icmp_transporte" }
-  icmp_dm:         { seriesName: "icmp_dm" }
-  icmp_olt:        { seriesName: "icmp_olt" }
-  icmp_rb750:      { seriesName: "icmp_rb750" }
-  icmp_loja:       { seriesName: "icmp_loja" }
+  tx_dm_olt:       { refId: A }
+  rx_dm_olt:       { refId: B }
+  tx_transp:       { refId: C }
+  rx_transp:       { refId: D }
+  tx_olt_rb:       { refId: E }
+  rx_olt_rb:       { refId: F }
+  tx_olt_loja:     { refId: G }
+  rx_olt_loja:     { refId: H }
+  icmp_transporte: { refId: I }
+  icmp_dm:         { refId: J }
+  icmp_olt:        { refId: K }
+  icmp_rb750:      { refId: L }
+  icmp_loja:       { refId: M }
